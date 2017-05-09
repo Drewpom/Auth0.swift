@@ -11,7 +11,8 @@ web_auth_files = [
   'Auth0/SafariWebAuth.swift',
   'Auth0/SafariSession.swift',
   'Auth0/NativeAuth.swift',
-  'Auth0/AuthProvider.swift'
+  'Auth0/AuthProvider.swift',
+  'Auth0/CredentialsManager.swift'
 ]
 
 Pod::Spec.new do |s|
@@ -23,7 +24,7 @@ Pod::Spec.new do |s|
                         DESC
   s.homepage         = 'https://github.com/auth0/Auth0.swift'
   s.license          = 'MIT'
-  s.author           = { 'Auth0' => 'oss@auth0.com', 'Hernan Zalazar' => 'hernan@auth0.com' }
+  s.authors          = { "Auth0" => "support@auth0.com" }, { "Hernan Zalazar" => "hernan@auth0.com" }, { "Martin Walsh" => "martin.walsh@auth0.com" }
   s.source           = { :git => 'https://github.com/auth0/Auth0.swift.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/auth0'
 
@@ -35,6 +36,7 @@ Pod::Spec.new do |s|
 
   s.ios.source_files = 'Auth0/*.{swift,h,m}'
   s.ios.frameworks = 'UIKit', 'SafariServices'
+  s.ios.dependency 'SimpleKeychain'
   s.osx.source_files = 'Auth0/*.swift'
   s.osx.exclude_files = web_auth_files
   s.watchos.source_files = 'Auth0/*.swift'
