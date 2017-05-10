@@ -41,12 +41,10 @@ class CredentialsManagerSpec: QuickSpec {
 
         let authentication = Auth0.authentication(clientId: ClientId, domain: Domain)
         var credentialsManager: CredentialsManager!
-        var storage: A0SimpleKeychain!
         var credentials: Credentials!
 
         beforeEach {
-            storage = A0SimpleKeychain()
-            credentialsManager = CredentialsManager(storage: storage, authentication: authentication, storeKey: "credentials")
+            credentialsManager = CredentialsManager(authentication: authentication)
             credentials = Credentials(accessToken: AccessToken, tokenType: TokenType, idToken: IdToken, refreshToken: RefreshToken, expiresIn: Date(timeIntervalSinceNow: ExpiresIn))
         }
 
@@ -62,7 +60,7 @@ class CredentialsManagerSpec: QuickSpec {
 
             it("should retrieve stored credentials from keychain") {
                 expect(credentialsManager.retrieve()).toNot(beNil())
-                storage.clearAll()
+                A0SimpleKeychain().clearAll()
             }
 
         }
@@ -78,16 +76,45 @@ class CredentialsManagerSpec: QuickSpec {
                 stub(condition: isToken(Domain) && hasAtLeast(["refresh_token": RefreshToken])) { _ in return authResponse(accessToken: AccessToken) }.name = "refresh_token login"
             }
 
-            it("should error when no refresh_token present") {
-                credentials = Credentials(accessToken: AccessToken, tokenType: TokenType, idToken: IdToken, refreshToken: nil, expiresIn: Date(timeIntervalSinceNow: ExpiresIn))
-                credentialsManager.renew(credentials) { error = $0; newCredentials = $1 }
-                expect(error).toEventuallyNot(beNil())
+            afterEach {
+                A0SimpleKeychain().clearAll()
+            }
+
+            it("should error when no credentials stored") {
+                A0SimpleKeychain().clearAll()
+                credentialsManager.retrieveCredentialsAutoRenew { error = $0; newCredentials = $1 }
+                expect(error).to(matchError(CredentialsManagerError.missingCredentials))
                 expect(newCredentials).toEventually(beNil())
             }
 
+            it("should error when no refresh_token present") {
+                credentials = Credentials(accessToken: AccessToken, tokenType: TokenType, idToken: IdToken, refreshToken: nil, expiresIn: Date(timeIntervalSinceNow: ExpiresIn))
+                _ = credentialsManager.store(credentials)
+                credentialsManager.retrieveCredentialsAutoRenew { error = $0; newCredentials = $1 }
+                expect(error).to(matchError(CredentialsManagerError.noRefreshToken))
+                expect(newCredentials).toEventually(beNil())
+            }
+
+            it("should error when no expiresIn present") {
+                credentials = Credentials(accessToken: AccessToken, tokenType: TokenType, idToken: IdToken, refreshToken: RefreshToken, expiresIn: nil)
+                _ = credentialsManager.store(credentials)
+                credentialsManager.retrieveCredentialsAutoRenew { error = $0; newCredentials = $1 }
+                expect(error).to(matchError(CredentialsManagerError.noExpiresIn))
+                expect(newCredentials).toEventually(beNil())
+            }
+
+            it("should return original credentials as not expired") {
+                _ = credentialsManager.store(credentials)
+                credentialsManager.retrieveCredentialsAutoRenew { error = $0; newCredentials = $1 }
+                expect(error).to(beNil())
+                expect(newCredentials).toEventuallyNot(beNil())
+            }
+
             it("should yield new credentials") {
+                credentials = Credentials(accessToken: AccessToken, tokenType: TokenType, idToken: IdToken, refreshToken: RefreshToken, expiresIn: Date(timeIntervalSinceNow: -3600))
+                _ = credentialsManager.store(credentials)
                 waitUntil(timeout: 2) { done in
-                    credentialsManager.renew(credentials) { error = $0; newCredentials = $1
+                    credentialsManager.retrieveCredentialsAutoRenew { error = $0; newCredentials = $1
                         expect(error).to(beNil())
                         expect(newCredentials?.accessToken) == AccessToken
                         done()

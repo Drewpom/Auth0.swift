@@ -12,7 +12,8 @@ web_auth_files = [
   'Auth0/SafariSession.swift',
   'Auth0/NativeAuth.swift',
   'Auth0/AuthProvider.swift',
-  'Auth0/CredentialsManager.swift'
+  'Auth0/CredentialsManager.swift',
+  'Auth0/CredentialsManagerError.swift'
 ]
 
 Pod::Spec.new do |s|

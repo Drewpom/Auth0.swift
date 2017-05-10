@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B25A52F1E3F520300563AE5 /* NativeAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B25A52E1E3F520300563AE5 /* NativeAuth.swift */; };
 		5B25A5331E3F68FA00563AE5 /* SafariSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B25A5321E3F68FA00563AE5 /* SafariSession.swift */; };
+		5B5E93F91EC45C22002A37F9 /* CredentialsManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E93F81EC45C22002A37F9 /* CredentialsManagerError.swift */; };
 		5B6269E71E3F702000305093 /* NativeAuthSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6269E51E3F700000305093 /* NativeAuthSpec.swift */; };
 		5B6269EA1E3F9E5200305093 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6269E91E3F9E5200305093 /* AuthProvider.swift */; };
 		5BD4A9CE1DEC6EFA00D6D7AE /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD4A9CD1DEC6EFA00D6D7AE /* ResponseType.swift */; };
@@ -294,6 +295,7 @@
 /* Begin PBXFileReference section */
 		5B25A52E1E3F520300563AE5 /* NativeAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAuth.swift; path = Auth0/NativeAuth.swift; sourceTree = SOURCE_ROOT; };
 		5B25A5321E3F68FA00563AE5 /* SafariSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SafariSession.swift; path = Auth0/SafariSession.swift; sourceTree = SOURCE_ROOT; };
+		5B5E93F81EC45C22002A37F9 /* CredentialsManagerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialsManagerError.swift; sourceTree = "<group>"; };
 		5B6269E51E3F700000305093 /* NativeAuthSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAuthSpec.swift; path = Auth0Tests/NativeAuthSpec.swift; sourceTree = SOURCE_ROOT; };
 		5B6269E91E3F9E5200305093 /* AuthProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthProvider.swift; path = Auth0/AuthProvider.swift; sourceTree = SOURCE_ROOT; };
 		5B9A54411E49E3AE004B5454 /* Auth0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = SOURCE_ROOT; };
@@ -489,6 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				5BEDE1891EC21B040007300D /* CredentialsManager.swift */,
+				5B5E93F81EC45C22002A37F9 /* CredentialsManagerError.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1307,6 +1310,7 @@
 				5BD4A9CE1DEC6EFA00D6D7AE /* ResponseType.swift in Sources */,
 				5FDE87471D8A422300EA27DC /* Telemetry.swift in Sources */,
 				5FAE9C911D8878D400A871CE /* SafariWebAuth.swift in Sources */,
+				5B5E93F91EC45C22002A37F9 /* CredentialsManagerError.swift in Sources */,
 				5FDE875D1D8A424700EA27DC /* AuthenticationError.swift in Sources */,
 				5FADB6061CED27FB00D4BB50 /* Users.swift in Sources */,
 			);
