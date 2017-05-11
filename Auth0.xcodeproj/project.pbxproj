@@ -11,6 +11,7 @@
 		5B25A5331E3F68FA00563AE5 /* SafariSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B25A5321E3F68FA00563AE5 /* SafariSession.swift */; };
 		5B5E93F91EC45C22002A37F9 /* CredentialsManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E93F81EC45C22002A37F9 /* CredentialsManagerError.swift */; };
 		5B5E93FB1EC46024002A37F9 /* TouchAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E93FA1EC46024002A37F9 /* TouchAuthentication.swift */; };
+		5B5E93FE1EC4628D002A37F9 /* TouchAuthenticationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E93FC1EC46284002A37F9 /* TouchAuthenticationSpec.swift */; };
 		5B6269E71E3F702000305093 /* NativeAuthSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6269E51E3F700000305093 /* NativeAuthSpec.swift */; };
 		5B6269EA1E3F9E5200305093 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6269E91E3F9E5200305093 /* AuthProvider.swift */; };
 		5BD4A9CE1DEC6EFA00D6D7AE /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD4A9CD1DEC6EFA00D6D7AE /* ResponseType.swift */; };
@@ -298,6 +299,7 @@
 		5B25A5321E3F68FA00563AE5 /* SafariSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SafariSession.swift; path = Auth0/SafariSession.swift; sourceTree = SOURCE_ROOT; };
 		5B5E93F81EC45C22002A37F9 /* CredentialsManagerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialsManagerError.swift; sourceTree = "<group>"; };
 		5B5E93FA1EC46024002A37F9 /* TouchAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchAuthentication.swift; sourceTree = "<group>"; };
+		5B5E93FC1EC46284002A37F9 /* TouchAuthenticationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TouchAuthenticationSpec.swift; path = Auth0Tests/TouchAuthenticationSpec.swift; sourceTree = SOURCE_ROOT; };
 		5B6269E51E3F700000305093 /* NativeAuthSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NativeAuthSpec.swift; path = Auth0Tests/NativeAuthSpec.swift; sourceTree = SOURCE_ROOT; };
 		5B6269E91E3F9E5200305093 /* AuthProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthProvider.swift; path = Auth0/AuthProvider.swift; sourceTree = SOURCE_ROOT; };
 		5B9A54411E49E3AE004B5454 /* Auth0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = SOURCE_ROOT; };
@@ -705,6 +707,7 @@
 			isa = PBXGroup;
 			children = (
 				5BEDE1931EC3331A0007300D /* CredentialsManagerSpec.swift */,
+				5B5E93FC1EC46284002A37F9 /* TouchAuthenticationSpec.swift */,
 				5FBBF0371CC964BC0024D2AF /* Matchers.swift */,
 				5FBBF03A1CC96AA70024D2AF /* Responses.swift */,
 			);
@@ -1366,6 +1369,7 @@
 				5FCAB16A1D07AC3500331C84 /* ChallengeGeneratorSpec.swift in Sources */,
 				5FADB60F1CED7E5200D4BB50 /* UserPatchAttributesSpec.swift in Sources */,
 				5FA250541D4A85A200C544FA /* WebAuthErrorSpec.swift in Sources */,
+				5B5E93FE1EC4628D002A37F9 /* TouchAuthenticationSpec.swift in Sources */,
 				5FBBF0381CC964BC0024D2AF /* Matchers.swift in Sources */,
 				5F93BC0B1CC6B0DE0031519F /* Auth0Spec.swift in Sources */,
 				5FE2F8A61CCA9C17003628F4 /* CredentialsSpec.swift in Sources */,

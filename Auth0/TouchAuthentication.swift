@@ -25,7 +25,11 @@ import LocalAuthentication
 
 public struct TouchAuthentication {
 
-    private let authContext = LAContext()
+    private let authContext: LAContext
+
+    public init(authContext: LAContext) {
+        self.authContext = authContext
+    }
 
     public var available: Bool {
         return self.authContext.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: nil)
