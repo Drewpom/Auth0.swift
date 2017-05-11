@@ -202,18 +202,18 @@ public protocol WebAuth: Trackable, Loggable {
     func start(_ callback: @escaping (Result<Credentials>) -> Void)
 
     /**
-     Silently clear the SSO Cookie in Auth0 and optionally signout from IdP.
+     Clear the SSO Cookie in Auth0 and optionally signout from IdP.
      More info: https://auth0.com/docs/logout
 
      
      ```
      Auth0
         .webAuth()
-        .logout(useFederated: false) { print($0) }
+        .clearSession(useFederated: false) { print($0) }
      ```
      
      - parameter federated: Bool to enable signout of the IdP
      - parameter callback: callback called with the result of the logout
      */
-    func logout(useFederated federated: Bool, callback: @escaping (Bool) -> Void)
+    func clearSession(useFederated federated: Bool, callback: @escaping (Bool) -> Void)
 }
